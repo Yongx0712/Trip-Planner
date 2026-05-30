@@ -26,10 +26,11 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# 配置CORS
+# 配置CORS（含 127.0.0.1，避免预检 OPTIONS 返回 400）
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.get_cors_origins_list(),
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

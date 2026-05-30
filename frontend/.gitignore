@@ -23,7 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment
+# Environment（勿提交密钥，复制 .env.example 为 .env）
+.env
 .env.local
 .env.*.local
 

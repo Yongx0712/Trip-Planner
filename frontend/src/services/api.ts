@@ -1,7 +1,10 @@
 import axios from 'axios'
 import type { TripFormData, TripPlanResponse } from '@/types'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+// 开发环境走 Vite 代理（同源 /api），避免浏览器 CORS 拦截
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ??
+  (import.meta.env.DEV ? '' : 'http://localhost:8000')
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
